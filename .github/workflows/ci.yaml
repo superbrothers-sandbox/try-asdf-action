@@ -9,7 +9,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         repository: superbrothers/kubectl-open-svc-plugin
-    - run: export | grep -e "^GO" ||:
+    - run: export
     - uses: asdf-vm/actions/install@v1
       with:
         tool_versions: |
@@ -17,5 +17,5 @@ jobs:
     - run: |
         export GOROOT="$(go env GOROOT)"
         export GOTOOLDIR="$(go env GOTOOLDIR)"
-    - run: export | grep -e "^GO"
+    - run: export
     - run: make build
