@@ -6,12 +6,11 @@ jobs:
     name: Update
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: asdf setup
-        uses: asdf-vm/actions/setup@v1.0.0
-      - name: asdf install
-        run: |
-          set -x
-          asdf plugin add aws-iam-authenticator https://github.com/stefansedich/asdf-aws-iam-authenticator
-          asdf install
-          asdf exec aws-iam-authenticator help
+    - uses: actions/checkout@v2
+      with:
+        repository: superbrothers/kubectl-open-svc-plugin
+    - uses: asdf-vm/actions/install@v1
+      with:
+        tool_versions: |
+          golang 1.13.10
+    - run: make build
