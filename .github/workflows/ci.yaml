@@ -9,7 +9,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         repository: superbrothers/kubectl-open-svc-plugin
-    - run: export | grep -e "^GO"
+    - run: export | grep -e "^GO" ||:
     - uses: asdf-vm/actions/install@v1
       with:
         tool_versions: |
