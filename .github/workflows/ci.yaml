@@ -13,4 +13,5 @@ jobs:
       with:
         tool_versions: |
           golang 1.13.10
+    - run: go env
     - run: make build
