@@ -9,9 +9,13 @@ jobs:
     - uses: actions/checkout@v2
       with:
         repository: superbrothers/kubectl-open-svc-plugin
+    - run: export | grep -e "^GO"
     - uses: asdf-vm/actions/install@v1
       with:
         tool_versions: |
           golang 1.13.10
-    - run: go env
+    - run: |
+        export GOROOT="$(go env GOROOT)"
+        export GOTOOLDIR="$(go env GOTOOLDIR)"
+    - run: export | grep -e "^GO"
     - run: make build
